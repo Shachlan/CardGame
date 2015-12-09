@@ -8,6 +8,19 @@
 
 #import "Card.h"
 
+#import <UIKit/UIKit.h>
+
 @interface SetCard : Card
+
+@property (nonatomic, strong, readonly) NSNumber *fillLevel;
+@property (nonatomic, strong, readonly) UIColor *color;
+@property (nonatomic, strong, readonly) NSString *shape;
+@property (nonatomic, readonly) int number;
+
+- (void)setCard:(int)numOfChars color:(UIColor *)color fillLevel:(NSNumber *)fillLevel shape:(NSString *)shape;
+
++ (NSArray *)fillLevels;
++ (NSArray *)colors;
++ (NSArray *)shapes;
 
 @end

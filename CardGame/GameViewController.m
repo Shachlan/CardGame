@@ -40,14 +40,18 @@ static const int MAX_MESSAGES_IN_HISTORY = 10;
     for(UIButton *cardButton in self.cardButtons) {
         NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
-        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:[self titleForCard:card] forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroudImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
     }
     
-    self.lastMoveDescription.text = [self.game.lastMove string];
+    self.lastMoveDescription.attributedText = self.game.lastMove;
     [self pushMessageToHistory:self.game.lastMove];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self updateUI];
 }
 
 - (void)clearHistory
@@ -70,9 +74,9 @@ static const int MAX_MESSAGES_IN_HISTORY = 10;
     return nil;
 }
 
-- (NSString *)titleForCard:(Card *)card
+- (NSAttributedString *)titleForCard:(Card *)card
 {
-    return nil;
+    return card.attributedContents;
 }
 
 - (Deck *)createDeck

@@ -57,11 +57,11 @@ static const int COST_TO_CHOOSE = 1;
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *chosenCard = [self cardAtIndex:index];
-    NSString *moveResult = nil;
+    NSAttributedString *moveResult = nil;
     
     if(chosenCard.isChosen) {
         chosenCard.chosen = NO;
-        moveResult = @"";
+        moveResult = [[NSAttributedString alloc] initWithString:@"" ];
     }
     else {
         chosenCard.chosen = YES;
@@ -74,9 +74,18 @@ static const int COST_TO_CHOOSE = 1;
         }
         
         if([chosenCards count] == self.numberOfCardsToChoose) {
-            int matchScore = [Card matchCards:chosenCards];
+            int matchScore = [chosenCard matchCards:chosenCards];
             
-            NSString *chosenCardsContents = [[chosenCards valueForKey:@"contents"] componentsJoinedByString:@","];
+            NSMutableAttributedString *chosenCardsContents = [[NSMutableAttributedString alloc] init];
+            NSAttributedString *delimiter = [[NSAttributedString alloc] initWithString:@", " ];
+            
+            for (Card *card in chosenCards) {
+                if (chosenCardsContents.length) {
+                    [chosenCardsContents appendAttributedString:delimiter];
+                }
+                [chosenCardsContents appendAttributedString:card.attributedContents];
+            }
+            
             NSString *description = nil;
             
             if(matchScore) {
@@ -98,13 +107,15 @@ static const int COST_TO_CHOOSE = 1;
                 description = [NSString stringWithFormat:@" mismatch for -%d points", MISMATCH_PENALTY];
             }
             
-            moveResult = [chosenCardsContents stringByAppendingString:description];
+            
+            [chosenCardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:description]];
+            moveResult = chosenCardsContents;
         }
         else {
-            moveResult = chosenCard.contents;;
+            moveResult = chosenCard.attributedContents;
         }
         
-        self.lastMove = [[NSAttributedString alloc] initWithString:moveResult];
+        self.lastMove = moveResult;
         
         self.score -= COST_TO_CHOOSE;
     }

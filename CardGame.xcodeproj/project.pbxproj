@@ -197,8 +197,8 @@
 		C7CA28521C1802F500665CB7 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C7590AE11C1572E300B9E837 /* Match2ViewController.m */,
 				C7590AE01C1572E300B9E837 /* Match2ViewController.h */,
+				C7590AE11C1572E300B9E837 /* Match2ViewController.m */,
 				C7CA28491C1700C300665CB7 /* SetViewController.h */,
 				C7CA284A1C1700C300665CB7 /* SetViewController.m */,
 				C7CA284C1C1800F700665CB7 /* MainTabController.h */,

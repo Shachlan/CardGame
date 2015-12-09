@@ -38,14 +38,6 @@
     }
 }
 
-- (int)match:(NSArray *)otherCards
-{
-    NSMutableArray *allCards = [otherCards mutableCopy];
-    [allCards addObject:self];
-    
-    return [PlayingCard matchCards:allCards];
-}
-
 - (int)matchSingleCard:(PlayingCard *)otherCard
 {
     int score = 0;
@@ -57,6 +49,21 @@
     else if (otherCard.suit == self.suit)
     {
         score = 1;
+    }
+    
+    return score;
+}
+
+- (int)matchCards:(NSArray *)cards
+{
+    int score = 0;
+    
+    for(int i = 0; i < [cards count] -1;i++)
+    {
+        for(int j = i+1; j < [cards count]; j++)
+        {
+            score += [[cards objectAtIndex:i] matchSingleCard:[cards objectAtIndex:j]];
+        }
     }
     
     return score;

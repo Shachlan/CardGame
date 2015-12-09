@@ -9,7 +9,5 @@
 #import "GameViewController.h"
 
 @interface Match2ViewController : GameViewController
-
-
 @end
 

@@ -17,17 +17,10 @@
 
 - (int) match:(NSArray *)otherCards
 {
-    int score = 0;
+    NSMutableArray *allCards = [otherCards mutableCopy];
+    [allCards addObject:self];
     
-    for(Card *card in otherCards)
-    {
-        if([card.contents isEqualToString:self.contents])
-        {
-            score = 1;
-        }
-    }
-    
-    return score;
+    return [self matchCards:allCards];
 }
 
 - (int)matchSingleCard:(Card *)otherCard
@@ -42,19 +35,13 @@
     return score;
 }
 
-+ (int)matchCards:(NSArray *)cards
+- (int)matchCards:(NSArray *)cards
 {
-    int score = 0;
-    
-    for(int i = 0; i < [cards count] -1;i++)
-    {
-        for(int j = i+1; j < [cards count]; j++)
-        {
-            score += [[cards objectAtIndex:i] matchSingleCard:[cards objectAtIndex:j]];
-        }
-    }
-    
-    return score;
+    return 0;
+}
+
+- (NSAttributedString *)attributedContents{
+    return [[NSAttributedString alloc] initWithString:self.contents];
 }
 
 @end

@@ -14,9 +14,9 @@
 
 @implementation Match2ViewController
 
-- (NSString *)titleForCard:(Card *)card
+- (NSAttributedString *)titleForCard:(Card *)card
 {
-    return card.isChosen ? card.contents : @"";
+    return card.isChosen ? card.attributedContents : [[NSAttributedString alloc] initWithString:@"" ];
 }
 
 - (UIImage *)backgroudImageForCard:(Card *)card
