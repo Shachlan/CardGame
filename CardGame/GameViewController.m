@@ -10,7 +10,7 @@
 #import "CardMatchingGame.h"
 
 @interface GameViewController()
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cards;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @end
 
@@ -22,7 +22,7 @@
     [self updateUI];
 }
 
-- (IBAction)touchCardButton:(UIButton *)sender
+- (IBAction)touchCardButton:(UIVI *)sender
 {
     NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];

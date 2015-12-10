@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C74E90BC1C19962800EA139B /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E90BB1C19962800EA139B /* PlayingCardView.m */; };
 		C7590ADC1C1572E300B9E837 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7590ADB1C1572E300B9E837 /* main.m */; };
 		C7590ADF1C1572E300B9E837 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7590ADE1C1572E300B9E837 /* AppDelegate.m */; };
 		C7590AE21C1572E300B9E837 /* Match2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7590AE11C1572E300B9E837 /* Match2ViewController.m */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C74E90BA1C19962800EA139B /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCardView.h; path = "Card views/PlayingCardView.h"; sourceTree = "<group>"; };
+		C74E90BB1C19962800EA139B /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCardView.m; path = "Card views/PlayingCardView.m"; sourceTree = "<group>"; };
 		C7590AD71C1572E300B9E837 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7590ADB1C1572E300B9E837 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7590ADD1C1572E300B9E837 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -108,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C74E90B91C1995E800EA139B /* CardViews */ = {
+			isa = PBXGroup;
+			children = (
+				C74E90BA1C19962800EA139B /* PlayingCardView.h */,
+				C74E90BB1C19962800EA139B /* PlayingCardView.m */,
+			);
+			name = CardViews;
+			sourceTree = "<group>";
+		};
 		C7590ACE1C1572E300B9E837 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +143,7 @@
 		C7590AD91C1572E300B9E837 /* CardGame */ = {
 			isa = PBXGroup;
 			children = (
+				C74E90B91C1995E800EA139B /* CardViews */,
 				C7CA28521C1802F500665CB7 /* controllers */,
 				C7590AE31C1572E300B9E837 /* Main.storyboard */,
 				C7590AE61C1572E300B9E837 /* Assets.xcassets */,
@@ -342,6 +355,7 @@
 				C7CA284B1C1700C300665CB7 /* SetViewController.m in Sources */,
 				C7CA284E1C1800F700665CB7 /* MainTabController.m in Sources */,
 				C762895E1C182A9A005C0D3F /* SetCardDeck.m in Sources */,
+				C74E90BC1C19962800EA139B /* PlayingCardView.m in Sources */,
 				C7590ADC1C1572E300B9E837 /* main.m in Sources */,
 				C7CA283F1C158D9D00665CB7 /* PlayingCard.m in Sources */,
 				C762895B1C182A7C005C0D3F /* SetCard.m in Sources */,
