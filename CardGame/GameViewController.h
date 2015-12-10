@@ -12,8 +12,5 @@
 #import "CardMatchingGame.h"
 
 @interface GameViewController : UIViewController
-- (void)pushMessageToHistory:(NSAttributedString *)message;
-- (void)clearHistory;
-@property (nonatomic, strong,readonly) NSAttributedString *history;
 @property (strong, nonatomic) CardMatchingGame *game;
 @end

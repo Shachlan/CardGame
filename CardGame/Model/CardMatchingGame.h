@@ -17,6 +17,5 @@
 - (void)setMatchMode:(BOOL)match3;
 
 @property (nonatomic, readonly) int score;
-@property (nonatomic, strong) NSAttributedString *lastMove;
 
 @end

@@ -9,23 +9,10 @@
 #import "MainTabController.h"
 
 #import "GameViewController.h"
-#import "HistoryViewController.h"
 
 @interface MainTabController()
 @end
 
 @implementation MainTabController
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"SegueToHistory"]) {
-        HistoryViewController *vc = [segue destinationViewController];
-        
-        GameViewController *currentGame = self.selectedViewController;
-        
-        vc.history = currentGame.history;
-    }
-}
 
 @end

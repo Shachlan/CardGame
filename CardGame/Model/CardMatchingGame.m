@@ -57,11 +57,9 @@ static const int COST_TO_CHOOSE = 1;
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *chosenCard = [self cardAtIndex:index];
-    NSAttributedString *moveResult = nil;
     
     if(chosenCard.isChosen) {
         chosenCard.chosen = NO;
-        moveResult = [[NSAttributedString alloc] initWithString:@"" ];
     }
     else {
         chosenCard.chosen = YES;
@@ -76,25 +74,12 @@ static const int COST_TO_CHOOSE = 1;
         if([chosenCards count] == self.numberOfCardsToChoose) {
             int matchScore = [chosenCard matchCards:chosenCards];
             
-            NSMutableAttributedString *chosenCardsContents = [[NSMutableAttributedString alloc] init];
-            NSAttributedString *delimiter = [[NSAttributedString alloc] initWithString:@", " ];
-            
-            for (Card *card in chosenCards) {
-                if (chosenCardsContents.length) {
-                    [chosenCardsContents appendAttributedString:delimiter];
-                }
-                [chosenCardsContents appendAttributedString:card.attributedContents];
-            }
-            
-            NSString *description = nil;
-            
             if(matchScore) {
                 for(Card *card in chosenCards) {
                     card.matched = YES;
                 }
                 
                 self.score += matchScore * self.matchBonus;
-                description = [NSString stringWithFormat:@" matched for %d points", matchScore * self.matchBonus];
             }
             else {
                 for(Card *card in chosenCards) {
@@ -103,19 +88,8 @@ static const int COST_TO_CHOOSE = 1;
                 
                 chosenCard.chosen = YES;
                 self.score -= MISMATCH_PENALTY;
-                
-                description = [NSString stringWithFormat:@" mismatch for -%d points", MISMATCH_PENALTY];
             }
-            
-            
-            [chosenCardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:description]];
-            moveResult = chosenCardsContents;
         }
-        else {
-            moveResult = chosenCard.attributedContents;
-        }
-        
-        self.lastMove = moveResult;
         
         self.score -= COST_TO_CHOOSE;
     }
