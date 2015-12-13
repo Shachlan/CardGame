@@ -39,11 +39,164 @@
                                     <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iiM-sJ-vEf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uA-RY-hmS" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="238" y="187" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-A9-zBe" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="305" y="187" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87T-Em-sDO" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="37" y="275" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ab-3M-Ys2" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="104" y="275" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gni-QZ-GHi" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="171" y="275" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MO-IK-fC5" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="238" y="275" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTv-Ml-Ag6" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="305" y="275" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZX-WJ-kUX" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="104" y="187" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfW-17-Tl8" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="171" y="187" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfg-cp-mKB" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="37" y="363" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-3t-sW1" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="238" y="363" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kka-V5-3fd" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="305" y="363" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJu-lM-Hvd" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="37" y="451" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-QH-FXa" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="104" y="451" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6n-oz-Wbx" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="171" y="451" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUs-X7-xgd" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="238" y="451" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkV-iA-aFt" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="305" y="451" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31Q-Es-dbr" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="104" y="363" width="59" height="80"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bg7-oY-KRQ" customClass="PlayingCardView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="171" y="363" width="59" height="80"/>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hi-Ib-grf" customClass="PlayingCardView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="28" width="59" height="80"/>
+                                    <rect key="frame" x="37" y="187" width="59" height="80"/>
                                 </variation>
                             </view>
                         </subviews>
@@ -52,6 +205,25 @@
                             <mask key="subviews">
                                 <exclude reference="C24-Dh-aJG"/>
                                 <exclude reference="FFs-Ij-7SP"/>
+                                <exclude reference="0uA-RY-hmS"/>
+                                <exclude reference="TCx-A9-zBe"/>
+                                <exclude reference="87T-Em-sDO"/>
+                                <exclude reference="9ab-3M-Ys2"/>
+                                <exclude reference="gni-QZ-GHi"/>
+                                <exclude reference="0MO-IK-fC5"/>
+                                <exclude reference="HTv-Ml-Ag6"/>
+                                <exclude reference="7ZX-WJ-kUX"/>
+                                <exclude reference="KfW-17-Tl8"/>
+                                <exclude reference="Gfg-cp-mKB"/>
+                                <exclude reference="oEN-3t-sW1"/>
+                                <exclude reference="kka-V5-3fd"/>
+                                <exclude reference="EJu-lM-Hvd"/>
+                                <exclude reference="V0k-QH-FXa"/>
+                                <exclude reference="b6n-oz-Wbx"/>
+                                <exclude reference="jUs-X7-xgd"/>
+                                <exclude reference="xkV-iA-aFt"/>
+                                <exclude reference="31Q-Es-dbr"/>
+                                <exclude reference="Bg7-oY-KRQ"/>
                                 <exclude reference="3hi-Ib-grf"/>
                             </mask>
                         </variation>
@@ -59,6 +231,25 @@
                             <mask key="subviews">
                                 <include reference="C24-Dh-aJG"/>
                                 <include reference="FFs-Ij-7SP"/>
+                                <include reference="0uA-RY-hmS"/>
+                                <include reference="TCx-A9-zBe"/>
+                                <include reference="87T-Em-sDO"/>
+                                <include reference="9ab-3M-Ys2"/>
+                                <include reference="gni-QZ-GHi"/>
+                                <include reference="0MO-IK-fC5"/>
+                                <include reference="HTv-Ml-Ag6"/>
+                                <include reference="7ZX-WJ-kUX"/>
+                                <include reference="KfW-17-Tl8"/>
+                                <include reference="Gfg-cp-mKB"/>
+                                <include reference="oEN-3t-sW1"/>
+                                <include reference="kka-V5-3fd"/>
+                                <include reference="EJu-lM-Hvd"/>
+                                <include reference="V0k-QH-FXa"/>
+                                <include reference="b6n-oz-Wbx"/>
+                                <include reference="jUs-X7-xgd"/>
+                                <include reference="xkV-iA-aFt"/>
+                                <include reference="31Q-Es-dbr"/>
+                                <include reference="Bg7-oY-KRQ"/>
                                 <include reference="3hi-Ib-grf"/>
                             </mask>
                         </variation>
@@ -68,6 +259,27 @@
                         <outlet property="scoreLabel" destination="C24-Dh-aJG" id="tVb-cp-ir5"/>
                         <outletCollection property="cards" destination="3hi-Ib-grf" id="TfV-tY-f44"/>
                         <outletCollection property="cards" destination="3hi-Ib-grf" id="hGR-8m-aAG"/>
+                        <outletCollection property="cards" destination="3hi-Ib-grf" id="XzN-1E-jUj"/>
+                        <outletCollection property="cards" destination="3hi-Ib-grf" id="Zdc-mW-TiY"/>
+                        <outletCollection property="cards" destination="7ZX-WJ-kUX" id="0WK-tR-Kbf"/>
+                        <outletCollection property="cards" destination="KfW-17-Tl8" id="qJZ-GF-sam"/>
+                        <outletCollection property="cards" destination="0uA-RY-hmS" id="Zop-T0-n6b"/>
+                        <outletCollection property="cards" destination="TCx-A9-zBe" id="S1t-lO-wZO"/>
+                        <outletCollection property="cards" destination="HTv-Ml-Ag6" id="fmC-WS-sZs"/>
+                        <outletCollection property="cards" destination="0MO-IK-fC5" id="8AL-P8-8g1"/>
+                        <outletCollection property="cards" destination="gni-QZ-GHi" id="z3r-DR-0fV"/>
+                        <outletCollection property="cards" destination="9ab-3M-Ys2" id="GSo-rR-hHB"/>
+                        <outletCollection property="cards" destination="87T-Em-sDO" id="IiI-lj-F1P"/>
+                        <outletCollection property="cards" destination="kka-V5-3fd" id="seB-vm-qfZ"/>
+                        <outletCollection property="cards" destination="oEN-3t-sW1" id="Rz4-rV-m0C"/>
+                        <outletCollection property="cards" destination="Bg7-oY-KRQ" id="8pZ-4B-TAu"/>
+                        <outletCollection property="cards" destination="31Q-Es-dbr" id="wNh-kJ-Hkj"/>
+                        <outletCollection property="cards" destination="Gfg-cp-mKB" id="6aF-yo-pD4"/>
+                        <outletCollection property="cards" destination="xkV-iA-aFt" id="EeC-I2-h2S"/>
+                        <outletCollection property="cards" destination="jUs-X7-xgd" id="gQt-AW-Q1A"/>
+                        <outletCollection property="cards" destination="b6n-oz-Wbx" id="4XK-B6-cFW"/>
+                        <outletCollection property="cards" destination="V0k-QH-FXa" id="651-4e-eSg"/>
+                        <outletCollection property="cards" destination="EJu-lM-Hvd" id="Kdh-oT-2jQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

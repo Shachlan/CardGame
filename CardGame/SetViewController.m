@@ -10,23 +10,22 @@
 
 #import "SetCardDeck.h"
 
-@implementation SetViewController
+@interface GameViewController()
+@property (strong, nonatomic) CardMatchingGame *game;
+@end
 
-- (UIImage *)backgroudImageForCard:(Card *)card
-{
-    return card.isChosen ?[UIImage imageNamed:@"card-chosen"] : [UIImage imageNamed:@"card-front"];
-}
+@implementation SetViewController
 
 - (Deck *)createDeck
 {
-    return [[SetCardDeck alloc] init];
+  return [[SetCardDeck alloc] init];
 }
 
 - (CardMatchingGame *)game
 {
-    CardMatchingGame *game = super.game;
-    [game setMatchMode:YES];
-    return game;
+  CardMatchingGame *game = super.game;
+  [game setMatchMode:YES];
+  return game;
 }
 
 @end

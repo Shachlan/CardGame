@@ -6,10 +6,7 @@
 //  Copyright © 2015 Shachar Langbeheim. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CardView.h"
 
-@interface PlayingCardView : UIView
-@property (nonatomic) BOOL faceUp;
-@property (nonatomic, strong) NSString *suit;
-@property (nonatomic, strong) NSString *rank;
+@interface PlayingCardView : CardView
 @end

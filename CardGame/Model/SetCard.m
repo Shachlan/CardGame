@@ -69,7 +69,7 @@
                                  NSStrokeColorAttributeName: color,
                                  };
     
-    self.attributedContents = [[NSMutableAttributedString alloc] initWithString:str attributes:attributes];
+    //self.attributedContents = [[NSMutableAttributedString alloc] initWithString:str attributes:attributes];
 }
 
 + (NSArray *)shapes
@@ -87,6 +87,6 @@
     return @[[NSNumber numberWithFloat: 0], [NSNumber numberWithFloat: 0.1], [NSNumber numberWithFloat: 1]];
 }
 
-@synthesize attributedContents = _attributedContents;
+//@synthesize attributedContents = _attributedContents;
 
 @end

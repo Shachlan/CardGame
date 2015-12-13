@@ -12,5 +12,4 @@
 #import "CardMatchingGame.h"
 
 @interface GameViewController : UIViewController
-@property (strong, nonatomic) CardMatchingGame *game;
 @end

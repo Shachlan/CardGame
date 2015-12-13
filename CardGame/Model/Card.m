@@ -12,7 +12,6 @@
 
 @end
 
-
 @implementation Card
 
 - (int) match:(NSArray *)otherCards
@@ -23,25 +22,11 @@
     return [self matchCards:allCards];
 }
 
-- (int)matchSingleCard:(Card *)otherCard
-{
-    int score = 0;
-    
-    if([otherCard.contents isEqualToString:self.contents])
-    {
-        score = 1;
-    }
-    
-    return score;
-}
-
 - (int)matchCards:(NSArray *)cards
 {
     return 0;
 }
 
-- (NSAttributedString *)attributedContents{
-    return [[NSAttributedString alloc] initWithString:self.contents];
-}
+@synthesize attributes = _attributes;
 
 @end
