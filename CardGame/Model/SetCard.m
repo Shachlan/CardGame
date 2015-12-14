@@ -8,10 +8,12 @@
 
 #import "SetCard.h"
 
+#import "../SetEnums.h"
+
 @interface SetCard()
 @property (nonatomic, strong, readwrite) NSNumber *fillLevel;
 @property (nonatomic, strong, readwrite) UIColor *color;
-@property (nonatomic, strong, readwrite) NSString *shape;
+@property (nonatomic, strong, readwrite) NSNumber *shape;
 @property (nonatomic, readwrite) int number;
 @end
 
@@ -52,39 +54,47 @@
              ![[attributes objectAtIndex:0] isEqual:[attributes objectAtIndex:2]]);
 }
 
--(void)setCard:(int)numOfChars color:(UIColor *)color fillLevel:(NSNumber *)fillLevel shape:(NSString *)shape{
+-(void)setCard:(int)numOfChars color:(UIColor *)color fillLevel:(NSNumber *)fillLevel shape:(NSNumber *)shape{
     self.color = color;
     self.fillLevel = fillLevel;
     self.shape = shape;
     self.number = numOfChars;
-    
-    NSString *str = [[NSString alloc] init];
-    for(int i = 0; i < numOfChars; i++){
-        str = [str stringByAppendingString:shape];
-    }
-    
-    NSDictionary *attributes = @{
-                                 NSForegroundColorAttributeName: [color colorWithAlphaComponent:[fillLevel floatValue]],
-                                 NSStrokeWidthAttributeName: @-3,
-                                 NSStrokeColorAttributeName: color,
-                                 };
-    
-    //self.attributedContents = [[NSMutableAttributedString alloc] initWithString:str attributes:attributes];
+}
+
+@synthesize attributes = _attributes;
+
+- (NSArray *) attributes
+{
+  if(!_attributes)
+  {
+    NSMutableArray *mutableAttributes = [[NSMutableArray alloc] init];
+    [mutableAttributes addObject:[NSNumber numberWithInt: self.number]];
+    [mutableAttributes addObject:self.color];
+    [mutableAttributes addObject:self.shape];
+    [mutableAttributes addObject:self.fillLevel];
+    _attributes = mutableAttributes;
+  }
+  
+  return _attributes;
 }
 
 + (NSArray *)shapes
 {
-    return @[@"▲", @"●", @"■"];
+  return @[[NSNumber numberWithInt: SQUIGGLE],
+           [NSNumber numberWithInt: DIAMOND],
+           [NSNumber numberWithInt: OVAL]];
 }
 
 + (NSArray *)colors
 {
-    return @[[UIColor blackColor], [UIColor redColor], [UIColor blueColor]];
+    return @[[UIColor greenColor], [UIColor redColor], [UIColor purpleColor]];
 }
 
 + (NSArray *)fillLevels
 {
-    return @[[NSNumber numberWithFloat: 0], [NSNumber numberWithFloat: 0.1], [NSNumber numberWithFloat: 1]];
+  return @[[NSNumber numberWithInt: NO_FILL],
+           [NSNumber numberWithInt: PARTIAL],
+           [NSNumber numberWithInt: FULL]];
 }
 
 //@synthesize attributedContents = _attributedContents;

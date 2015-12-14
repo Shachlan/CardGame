@@ -9,6 +9,7 @@
 #import "CardView.h"
 
 @implementation CardView
+
 - (void)setCard:(NSArray *)attributes{
 }
 

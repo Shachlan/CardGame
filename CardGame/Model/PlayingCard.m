@@ -76,7 +76,7 @@
   if(!_attributes)
   {
     NSMutableArray *mutableAttributes = [[NSMutableArray alloc] init];
-    [mutableAttributes addObject:[NSNumber numberWithInt: self.rank]];
+    [mutableAttributes addObject:[NSNumber numberWithLong: self.rank]];
     [mutableAttributes addObject:self.suit];
     _attributes = mutableAttributes;
   }

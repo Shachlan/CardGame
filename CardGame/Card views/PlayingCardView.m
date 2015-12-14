@@ -13,6 +13,7 @@
 @property (nonatomic)BOOL faceUp;
 @property (nonatomic, strong)NSString *suit;
 @property (nonatomic)NSUInteger rank;
+@property (nonatomic) float cardAlpha;
 @end
 
 @implementation PlayingCardView
@@ -30,14 +31,13 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 #define CORNER_RADIUS 12.0
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect{
   // Drawing code
   UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS];
   
   [roundedRect addClip];
   
-  [[UIColor whiteColor] setFill];
+  [[[UIColor whiteColor] colorWithAlphaComponent:self.cardAlpha] setFill];
   UIRectFill(self.bounds);
   
   if (self.faceUp) {
@@ -46,7 +46,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
       CGRect imageRect = CGRectInset(self.bounds,
                                      self.bounds.size.width * (1.0 - self.faceCardScaleFactor),
                                      self.bounds.size.height * (1.0 - self.faceCardScaleFactor));
-      [faceImage drawInRect:imageRect];
+      [faceImage drawInRect:imageRect blendMode:kCGBlendModeNormal alpha:self.cardAlpha];
     } else {
       [self drawPips];
     }
@@ -62,8 +62,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 #define PIP_FONT_SCALE_FACTOR 0.20
 #define CORNER_OFFSET 2.0
 
-- (void)drawCorners
-{
+- (void)drawCorners{
   NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
   paragraphStyle.alignment = NSTextAlignmentCenter;
   
@@ -81,16 +80,14 @@ const float kDefaultFaceCardScaleFactor = 0.9;
   [self popContext];
 }
 
-- (void)pushContextAndRotateUpsideDown
-{
+- (void)pushContextAndRotateUpsideDown{
   CGContextRef context = UIGraphicsGetCurrentContext();
   CGContextSaveGState(context);
   CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
   CGContextRotateCTM(context, M_PI);
 }
 
-- (void)popContext
-{
+- (void)popContext{
   CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
@@ -111,8 +108,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 #define PIP_VOFFSET2_PERCENTAGE 0.175
 #define PIP_VOFFSET3_PERCENTAGE 0.270
 
-- (void)drawPips
-{
+- (void)drawPips{
   if ((self.rank == 1) || (self.rank == 5) || (self.rank == 9) || (self.rank == 3)) {
     [self drawPipsWithHorizontalOffset:0
                         verticalOffset:0
@@ -142,8 +138,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 - (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
                       verticalOffset:(CGFloat)voffset
-                          upsideDown:(BOOL)upsideDown
-{
+                          upsideDown:(BOOL)upsideDown{
   if (upsideDown) [self pushContextAndRotateUpsideDown];
   CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
   UIFont *pipFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
@@ -175,7 +170,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
   }
 }
 
-#pragma mark - my logic
+#pragma mark - card view implementation
 
 - (void)chooseCard:(BOOL)choice{
   self.faceUp = choice;
@@ -189,11 +184,13 @@ const float kDefaultFaceCardScaleFactor = 0.9;
   {
     recognizer.enabled = YES;
   }
+  self.cardAlpha = 1;
 }
 
 - (void)matchCard{
   for (UIGestureRecognizer *recognizer in self.gestureRecognizers)
   {
+    self.cardAlpha = 0.3;
     recognizer.enabled = NO;
   }
 }
@@ -204,38 +201,32 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 #define DEFAULT_FACE_CARD_SCALE_FACTOR 0.90
 
-- (CGFloat)faceCardScaleFactor
-{
+- (CGFloat)faceCardScaleFactor{
   if (!_faceCardScaleFactor) _faceCardScaleFactor = DEFAULT_FACE_CARD_SCALE_FACTOR;
   return _faceCardScaleFactor;
 }
 
-- (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor
-{
+- (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor{
   _faceCardScaleFactor = faceCardScaleFactor;
   [self setNeedsDisplay];
 }
 
-- (void)setSuit:(NSString *)suit
-{
+- (void)setSuit:(NSString *)suit{
   _suit = suit;
   [self setNeedsDisplay];
 }
 
-- (void)setRank:(NSUInteger)rank
-{
+- (void)setRank:(NSUInteger)rank{
   _rank = rank;
   [self setNeedsDisplay];
 }
 
-- (void)setFaceUp:(BOOL)faceUp
-{
+- (void)setFaceUp:(BOOL)faceUp{
   _faceUp = faceUp;
   [self setNeedsDisplay];
 }
 
-- (NSString *)rankAsString
-{
+- (NSString *)rankAsString{
   return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
 }
 
