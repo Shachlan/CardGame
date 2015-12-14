@@ -27,10 +27,10 @@ static const int COST_TO_CHOOSE = 1;
 {
     self = [super init];
     [self setMatchMode:NO];
-    if (self) {
-        for (int i = 0; i < count; i++) {
+    if (self){
+        for (int i = 0; i < count; i++){
             Card *card = [deck drawRandomCard];
-            if(card) {
+            if(card){
                 [self.cards addObject:card];
             }
             else {
@@ -58,31 +58,31 @@ static const int COST_TO_CHOOSE = 1;
 {
     Card *chosenCard = [self cardAtIndex:index];
     
-    if(chosenCard.isChosen) {
+    if(chosenCard.isChosen){
         chosenCard.chosen = NO;
     }
     else {
         chosenCard.chosen = YES;
         NSMutableArray *chosenCards = [[NSMutableArray alloc] init];
         
-        for (Card *card in self.cards) {
-            if(card.isChosen && !card.isMatched) {
+        for (Card *card in self.cards){
+            if(card.isChosen && !card.isMatched){
                 [chosenCards addObject:card];
             }
         }
         
-        if([chosenCards count] == self.numberOfCardsToChoose) {
+        if([chosenCards count] == self.numberOfCardsToChoose){
             int matchScore = [chosenCard matchCards:chosenCards];
             
-            if(matchScore) {
-                for(Card *card in chosenCards) {
+            if(matchScore){
+                for(Card *card in chosenCards){
                     card.matched = YES;
                 }
                 
                 self.score += matchScore * self.matchBonus;
             }
             else {
-                for(Card *card in chosenCards) {
+                for(Card *card in chosenCards){
                     card.chosen = NO;
                 }
                 
@@ -98,6 +98,10 @@ static const int COST_TO_CHOOSE = 1;
 - (Card *)cardAtIndex:(NSUInteger)index
 {
     return (index < [self.cards count]) ? self.cards[index] : nil;
+}
+
+- (void)removeCardFromIndex:(int)index{
+  [self.cards removeObjectAtIndex:index];
 }
 
 

@@ -86,8 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - card view implementation
 
-- (void)chooseCard:(BOOL)choice{
-  
+- (void)chooseCard:(BOOL)chosen{
+  self.cardAlpha = chosen ? 0.5 : 1;
+  [self setNeedsDisplay];
 }
 
 - (void)setCard:(NSArray *)attributes{
@@ -116,13 +117,6 @@ NS_ASSUME_NONNULL_BEGIN
       self.shapeFiller = [[FullFiller alloc] init];
       break;
   }
-  
-  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)
-  {
-    recognizer.enabled = YES;
-  }
-  [self setNeedsDisplay];
-  self.cardAlpha = 1;
 }
 
 - (void)matchCard{
@@ -130,6 +124,8 @@ NS_ASSUME_NONNULL_BEGIN
   {
     recognizer.enabled = NO;
   }
+  self.hidden = YES;
+  [self setNeedsDisplay];
 }
 @end
 

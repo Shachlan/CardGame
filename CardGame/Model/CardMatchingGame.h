@@ -15,6 +15,7 @@
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)setMatchMode:(BOOL)match3;
+- (void)removeCardFromIndex:(int)index;
 
 @property (nonatomic, readonly) int score;
 
