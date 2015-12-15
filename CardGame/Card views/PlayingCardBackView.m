@@ -27,10 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
   self.opaque = NO;
   self.contentMode = UIViewContentModeRedraw;
 }
-
-- (void)awakeFromNib{
-  [self setup];
-}
 @end
 
 NS_ASSUME_NONNULL_END

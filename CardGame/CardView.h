@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CardView
+@protocol CardView <UIDynamicItem>
 - (void)matchCard;
 - (void)chooseCard:(BOOL)choice;
 - (void)setCard:(NSArray *)attributes;

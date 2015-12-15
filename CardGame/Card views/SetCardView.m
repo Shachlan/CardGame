@@ -24,14 +24,21 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @implementation SetCardView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  if(self) {
+    [self setup];
+  }
+  
+  return self;
+}
+
 - (void)setup {
   self.backgroundColor = nil;
   self.opaque = NO;
   self.contentMode = UIViewContentModeRedraw;
-}
-
-- (void)awakeFromNib {
-  [self setup];
+  self.cardAlpha = 1;
 }
 
 #define CORNER_RADIUS 12.0

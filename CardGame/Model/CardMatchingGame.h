@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "Deck.h"
+#import "GameParameters.h"
 
 @interface CardMatchingGame : NSObject
 
-- (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck;
+- (instancetype)initWithDeck:(Deck *)deck andParameters:(id<GameParameters>)params;
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
-- (void)setMatchMode:(BOOL)match3;
 - (void)removeCardFromIndex:(int)index;
+- (Card *)drawCard;
 
 @property (nonatomic, readonly) int score;
 

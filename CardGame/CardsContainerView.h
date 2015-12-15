@@ -3,10 +3,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CardView.h"
+#import "ScoreUpdater.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PlayingCardBackView : UIView
-- (void)setup;
+@interface CardsContainerView : UIView
+- (void)reset;
+@property (nonatomic, weak) id<ScoreUpdater> scoreUpdater;
 @end
 
 NS_ASSUME_NONNULL_END

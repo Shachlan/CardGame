@@ -25,7 +25,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 #define CORNER_RADIUS 12.0
 
-- (void)drawRect:(CGRect)rect{
+- (void)drawRect:(CGRect)rect {
   // Drawing code
   UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                          cornerRadius:CORNER_RADIUS];
@@ -55,7 +55,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 #define PIP_FONT_SCALE_FACTOR 0.20
 #define CORNER_OFFSET 2.0
 
-- (void)drawCorners{
+- (void)drawCorners {
   NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
   paragraphStyle.alignment = NSTextAlignmentCenter;
   
@@ -78,25 +78,21 @@ const float kDefaultFaceCardScaleFactor = 0.9;
   [self popContext];
 }
 
-- (void)pushContextAndRotateUpsideDown{
+- (void)pushContextAndRotateUpsideDown {
   CGContextRef context = UIGraphicsGetCurrentContext();
   CGContextSaveGState(context);
   CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
   CGContextRotateCTM(context, M_PI);
 }
 
-- (void)popContext{
+- (void)popContext {
   CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
-- (void)setup{
+- (void)setup {
   self.backgroundColor = nil;
   self.opaque = NO;
   self.contentMode = UIViewContentModeRedraw;
-}
-
-- (void)awakeFromNib{
-  [self setup];
 }
 
 #pragma mark - Draw Pips
@@ -106,7 +102,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 #define PIP_VOFFSET2_PERCENTAGE 0.175
 #define PIP_VOFFSET3_PERCENTAGE 0.270
 
-- (void)drawPips{
+- (void)drawPips {
   if ((self.rank == 1) || (self.rank == 5) || (self.rank == 9) || (self.rank == 3)) {
     [self drawPipsWithHorizontalOffset:0
                         verticalOffset:0
@@ -138,7 +134,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 - (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
                       verticalOffset:(CGFloat)voffset
-                          upsideDown:(BOOL)upsideDown{
+                          upsideDown:(BOOL)upsideDown {
   if (upsideDown) [self pushContextAndRotateUpsideDown];
   CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
   UIFont *pipFont = [UIFont systemFontOfSize:self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
@@ -160,8 +156,7 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 - (void)drawPipsWithHorizontalOffset:(CGFloat)hoffset
                       verticalOffset:(CGFloat)voffset
-                  mirroredVertically:(BOOL)mirroredVertically
-{
+                  mirroredVertically:(BOOL)mirroredVertically {
   [self drawPipsWithHorizontalOffset:hoffset
                       verticalOffset:voffset
                           upsideDown:NO];
@@ -178,32 +173,32 @@ const float kDefaultFaceCardScaleFactor = 0.9;
 
 #define DEFAULT_FACE_CARD_SCALE_FACTOR 0.90
 
-- (CGFloat)faceCardScaleFactor{
+- (CGFloat)faceCardScaleFactor {
   if (!_faceCardScaleFactor) _faceCardScaleFactor = DEFAULT_FACE_CARD_SCALE_FACTOR;
   return _faceCardScaleFactor;
 }
 
-- (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor{
+- (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor {
   _faceCardScaleFactor = faceCardScaleFactor;
   [self setNeedsDisplay];
 }
 
-- (void)setSuit:(NSString *)suit{
+- (void)setSuit:(NSString *)suit {
   _suit = suit;
   [self setNeedsDisplay];
 }
 
-- (void)setRank:(NSUInteger)rank{
+- (void)setRank:(NSUInteger)rank {
   _rank = rank;
   [self setNeedsDisplay];
 }
 
-- (void)setCardAlpha:(float)cardAlpha{
+- (void)setCardAlpha:(float)cardAlpha {
   _cardAlpha = cardAlpha;
   [self setNeedsDisplay];
 }
 
-- (NSString *)rankAsString{
+- (NSString *)rankAsString {
   return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank];
 }
 

@@ -8,35 +8,23 @@
 
 #import "CardMatchingGame.h"
 
-
 @interface CardMatchingGame()
 @property (nonatomic,readwrite) int score;
 @property (nonatomic, strong) NSMutableArray *cards;
-@property (nonatomic) int numberOfCardsToChoose;
-@property (nonatomic) int matchBonus;
+@property (nonatomic, weak) id<GameParameters> parameters;
+@property (nonatomic, strong) Deck *deck;
 @end
 
 @implementation CardMatchingGame
 
 static const int MISMATCH_PENALTY = 2;
-static const int MATCH2_BONUS = 4;
-static const int MATCH3_BONUS = 2;
 static const int COST_TO_CHOOSE = 1;
 
-- (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck {
+- (instancetype)initWithDeck:(Deck *)deck andParameters:(id<GameParameters>)parameters {
   self = [super init];
-  [self setMatchMode:NO];
-  if (self){
-    for (int i = 0; i < count; i++) {
-      Card *card = [deck drawRandomCard];
-      if(card) {
-        [self.cards addObject:card];
-      }
-      else {
-        self = nil;
-        break;
-      }
-    }
+  if (self) {
+    _deck = deck;
+    self.parameters = parameters;
   }
   
   return self;
@@ -46,9 +34,10 @@ static const int COST_TO_CHOOSE = 1;
   return nil;
 }
 
-- (void)setMatchMode:(BOOL)match3 {
-  self.numberOfCardsToChoose = match3 ? 3 : 2;
-  self.matchBonus = match3 ? MATCH3_BONUS : MATCH2_BONUS;
+- (Card *)drawCard {
+  Card *card = [self.deck drawRandomCard];
+  [self.cards addObject:card];
+  return card;
 }
 
 - (void)chooseCardAtIndex:(NSUInteger)index {
@@ -67,7 +56,7 @@ static const int COST_TO_CHOOSE = 1;
       }
     }
     
-    if([chosenCards count] == self.numberOfCardsToChoose) {
+    if([chosenCards count] == self.parameters.numberOfCardsToMatch) {
       int matchScore = [chosenCard matchCards:chosenCards];
       
       if(matchScore) {
@@ -75,7 +64,7 @@ static const int COST_TO_CHOOSE = 1;
           card.matched = YES;
         }
         
-        self.score += matchScore * self.matchBonus;
+        self.score += matchScore * self.parameters.matchMultiplier;
       }
       else {
         for(Card *card in chosenCards) {
@@ -104,5 +93,7 @@ static const int COST_TO_CHOOSE = 1;
   if(!_cards) _cards = [[NSMutableArray alloc] init];
   return _cards;
 }
+
+@synthesize deck = _deck;
 
 @end

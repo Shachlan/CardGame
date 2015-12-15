@@ -8,7 +8,7 @@
         <!--Match2-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Match2" id="BYZ-38-t0r" customClass="Match2ViewController" sceneMemberID="viewController">
+                <viewController title="Match2" id="BYZ-38-t0r" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,15 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C24-Dh-aJG">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="60" y="555" width="280" height="21"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFs-Ij-7SP">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -33,225 +24,59 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="173" y="614" width="55" height="30"/>
+                                    <rect key="frame" x="173" y="627" width="55" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iiM-sJ-vEf"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hi-Ib-grf" customClass="PlayingCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30V-KI-m2K" customClass="PlayingCardFaceView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTo-AC-9Le" customClass="PlayingCardBackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="30V-KI-m2K"/>
-                                        <exclude reference="kTo-AC-9Le"/>
-                                    </mask>
-                                </variation>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C24-Dh-aJG">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="37" y="187" width="59" height="80"/>
-                                    <mask key="subviews">
-                                        <include reference="30V-KI-m2K"/>
-                                        <include reference="kTo-AC-9Le"/>
-                                    </mask>
+                                    <rect key="frame" x="20" y="598" width="360" height="21"/>
                                 </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5s-Op-sib" customClass="PlayingCardView">
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKf-MK-lj5" customClass="Match2GameView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-Bg-JRF" customClass="PlayingCardFaceView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sC0-nM-dPF" customClass="PlayingCardBackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="bBH-Bg-JRF"/>
-                                        <exclude reference="sC0-nM-dPF"/>
-                                    </mask>
-                                </variation>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="104" y="187" width="59" height="80"/>
-                                    <mask key="subviews">
-                                        <include reference="bBH-Bg-JRF"/>
-                                        <include reference="sC0-nM-dPF"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaK-8y-HRX" customClass="PlayingCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMA-is-Rf3" customClass="PlayingCardFaceView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlo-Jg-BpI" customClass="PlayingCardBackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="NMA-is-Rf3"/>
-                                        <exclude reference="Tlo-Jg-BpI"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="169" y="187" width="59" height="80"/>
-                                    <mask key="subviews">
-                                        <include reference="NMA-is-Rf3"/>
-                                        <include reference="Tlo-Jg-BpI"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-HI-SkG" customClass="PlayingCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZg-Ty-q6W" customClass="PlayingCardFaceView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vun-Nb-Nw3" customClass="PlayingCardBackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="KZg-Ty-q6W"/>
-                                        <exclude reference="vun-Nb-Nw3"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="236" y="187" width="59" height="80"/>
-                                    <mask key="subviews">
-                                        <include reference="KZg-Ty-q6W"/>
-                                        <include reference="vun-Nb-Nw3"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ua-zV-9M4" customClass="PlayingCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cL-ks-M7W" customClass="PlayingCardFaceView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e07-Rs-Sel" customClass="PlayingCardBackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="80"/>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="9cL-ks-M7W"/>
-                                        <exclude reference="e07-Rs-Sel"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="303" y="187" width="59" height="80"/>
-                                    <mask key="subviews">
-                                        <include reference="9cL-ks-M7W"/>
-                                        <include reference="e07-Rs-Sel"/>
-                                    </mask>
+                                    <rect key="frame" x="20" y="28" width="360" height="570"/>
                                 </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.028019737602036417" green="0.7612074607329844" blue="0.1614466413096379" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="C24-Dh-aJG"/>
                                 <exclude reference="FFs-Ij-7SP"/>
-                                <exclude reference="3hi-Ib-grf"/>
-                                <exclude reference="R5s-Op-sib"/>
-                                <exclude reference="CaK-8y-HRX"/>
-                                <exclude reference="nPc-HI-SkG"/>
-                                <exclude reference="9ua-zV-9M4"/>
+                                <exclude reference="C24-Dh-aJG"/>
+                                <exclude reference="iKf-MK-lj5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="C24-Dh-aJG"/>
                                 <include reference="FFs-Ij-7SP"/>
-                                <include reference="3hi-Ib-grf"/>
-                                <include reference="R5s-Op-sib"/>
-                                <include reference="CaK-8y-HRX"/>
-                                <include reference="nPc-HI-SkG"/>
-                                <include reference="9ua-zV-9M4"/>
+                                <include reference="C24-Dh-aJG"/>
+                                <include reference="iKf-MK-lj5"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Match 2" id="HQS-f5-ZPm"/>
                     <connections>
+                        <outlet property="cardContainmentView" destination="iKf-MK-lj5" id="IUB-kX-qKF"/>
                         <outlet property="scoreLabel" destination="C24-Dh-aJG" id="tVb-cp-ir5"/>
-                        <outletCollection property="cards" destination="3hi-Ib-grf" id="TfV-tY-f44"/>
-                        <outletCollection property="cards" destination="9ua-zV-9M4" id="SG8-wk-51N"/>
-                        <outletCollection property="cards" destination="nPc-HI-SkG" id="6fH-1T-T66"/>
-                        <outletCollection property="cards" destination="CaK-8y-HRX" id="kVX-2R-gr4"/>
-                        <outletCollection property="cards" destination="R5s-Op-sib" id="yre-N8-GyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371" y="514.5"/>
+            <point key="canvasLocation" x="1371" y="513.75"/>
         </scene>
         <!--Set-->
         <scene sceneID="kij-fk-7Ht">
             <objects>
-                <viewController title="Set" id="p74-VJ-f2k" customClass="SetViewController" sceneMemberID="viewController">
+                <viewController title="Set" id="p74-VJ-f2k" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="THT-SZ-QkK"/>
                         <viewControllerLayoutGuide type="bottom" id="w3g-Mu-uqd"/>
@@ -260,15 +85,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-Hd-jel">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="59" y="574" width="281" height="21"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aw-z9-SoD">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -276,317 +92,60 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="173" y="626" width="55" height="30"/>
+                                    <rect key="frame" x="173" y="627" width="55" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="resetGame:" destination="p74-VJ-f2k" eventType="touchUpInside" id="34x-Qe-d1Y"/>
                                     <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LjP-Nj-FTv"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elF-HC-jl7" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-Hd-jel">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="28" width="59" height="80"/>
+                                    <rect key="frame" x="20" y="598" width="360" height="21"/>
                                 </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-fA-CKn" customClass="SetCardView">
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIF-fT-wuX" customClass="SetGameView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="28" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vP-Fr-dtD" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="154" y="28" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG8-nJ-GM2" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="28" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFO-Zb-Xi8" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="288" y="28" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2h-ae-y1Y" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="116" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M09-mL-GWg" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="116" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ND9-qr-Lkv" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="154" y="116" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqt-BS-7wH" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="116" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2e3-iQ-mdV" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="288" y="116" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfJ-to-3SZ" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="204" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47i-4I-LF2" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="204" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdx-DT-IzK" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="154" y="204" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-1l-RRt" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="204" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5z-o2-9Ol" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="288" y="204" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KnH-yo-sSd" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="292" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0N-ie-RVs" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="292" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRP-xf-Fq8" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="154" y="292" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VV0-gS-IFJ" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="292" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ths-Xm-hp7" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="288" y="292" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-Wn-j5c" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="380" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HF-kQ-uzL" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="380" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-rX-SJr" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="380" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9X-Kh-n3P" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="288" y="380" width="59" height="80"/>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQt-be-ors" customClass="SetCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="154" y="380" width="59" height="80"/>
+                                    <rect key="frame" x="20" y="20" width="360" height="570"/>
                                 </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.69219617901804764" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Boy-Hd-jel"/>
                                 <exclude reference="9aw-z9-SoD"/>
-                                <exclude reference="elF-HC-jl7"/>
-                                <exclude reference="JhO-fA-CKn"/>
-                                <exclude reference="2vP-Fr-dtD"/>
-                                <exclude reference="VG8-nJ-GM2"/>
-                                <exclude reference="UFO-Zb-Xi8"/>
-                                <exclude reference="C2h-ae-y1Y"/>
-                                <exclude reference="M09-mL-GWg"/>
-                                <exclude reference="ND9-qr-Lkv"/>
-                                <exclude reference="Uqt-BS-7wH"/>
-                                <exclude reference="2e3-iQ-mdV"/>
-                                <exclude reference="lfJ-to-3SZ"/>
-                                <exclude reference="47i-4I-LF2"/>
-                                <exclude reference="Jdx-DT-IzK"/>
-                                <exclude reference="GCp-1l-RRt"/>
-                                <exclude reference="P5z-o2-9Ol"/>
-                                <exclude reference="KnH-yo-sSd"/>
-                                <exclude reference="u0N-ie-RVs"/>
-                                <exclude reference="XRP-xf-Fq8"/>
-                                <exclude reference="VV0-gS-IFJ"/>
-                                <exclude reference="ths-Xm-hp7"/>
-                                <exclude reference="N5K-Wn-j5c"/>
-                                <exclude reference="8HF-kQ-uzL"/>
-                                <exclude reference="Okp-rX-SJr"/>
-                                <exclude reference="L9X-Kh-n3P"/>
-                                <exclude reference="wQt-be-ors"/>
+                                <exclude reference="Boy-Hd-jel"/>
+                                <exclude reference="MIF-fT-wuX"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="Boy-Hd-jel"/>
                                 <include reference="9aw-z9-SoD"/>
-                                <include reference="elF-HC-jl7"/>
-                                <include reference="JhO-fA-CKn"/>
-                                <include reference="2vP-Fr-dtD"/>
-                                <include reference="VG8-nJ-GM2"/>
-                                <include reference="UFO-Zb-Xi8"/>
-                                <include reference="C2h-ae-y1Y"/>
-                                <include reference="M09-mL-GWg"/>
-                                <include reference="ND9-qr-Lkv"/>
-                                <include reference="Uqt-BS-7wH"/>
-                                <include reference="2e3-iQ-mdV"/>
-                                <include reference="lfJ-to-3SZ"/>
-                                <include reference="47i-4I-LF2"/>
-                                <include reference="Jdx-DT-IzK"/>
-                                <include reference="GCp-1l-RRt"/>
-                                <include reference="P5z-o2-9Ol"/>
-                                <include reference="KnH-yo-sSd"/>
-                                <include reference="u0N-ie-RVs"/>
-                                <include reference="XRP-xf-Fq8"/>
-                                <include reference="VV0-gS-IFJ"/>
-                                <include reference="ths-Xm-hp7"/>
-                                <include reference="N5K-Wn-j5c"/>
-                                <include reference="8HF-kQ-uzL"/>
-                                <include reference="Okp-rX-SJr"/>
-                                <include reference="L9X-Kh-n3P"/>
-                                <include reference="wQt-be-ors"/>
+                                <include reference="Boy-Hd-jel"/>
+                                <include reference="MIF-fT-wuX"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" id="yZp-fU-gKk"/>
                     <connections>
+                        <outlet property="cardContainmentView" destination="MIF-fT-wuX" id="VVZ-ev-ptH"/>
                         <outlet property="scoreLabel" destination="Boy-Hd-jel" id="JGi-X1-xdi"/>
-                        <outletCollection property="cards" destination="elF-HC-jl7" id="q03-z1-dTn"/>
-                        <outletCollection property="cards" destination="2vP-Fr-dtD" id="BcU-Oa-cQa"/>
-                        <outletCollection property="cards" destination="JhO-fA-CKn" id="Cwd-aG-oZh"/>
-                        <outletCollection property="cards" destination="elF-HC-jl7" id="Bso-AM-dpV"/>
-                        <outletCollection property="cards" destination="UFO-Zb-Xi8" id="ap0-1s-IiA"/>
-                        <outletCollection property="cards" destination="VG8-nJ-GM2" id="Cti-2d-tiU"/>
-                        <outletCollection property="cards" destination="ND9-qr-Lkv" id="5yx-qp-n2o"/>
-                        <outletCollection property="cards" destination="Uqt-BS-7wH" id="UcG-BA-xoy"/>
-                        <outletCollection property="cards" destination="2e3-iQ-mdV" id="G1a-L4-8lt"/>
-                        <outletCollection property="cards" destination="M09-mL-GWg" id="rxF-RJ-5Tg"/>
-                        <outletCollection property="cards" destination="C2h-ae-y1Y" id="lfa-bY-aai"/>
-                        <outletCollection property="cards" destination="P5z-o2-9Ol" id="E89-G4-Xz1"/>
-                        <outletCollection property="cards" destination="GCp-1l-RRt" id="Qqh-5b-Pa3"/>
-                        <outletCollection property="cards" destination="Jdx-DT-IzK" id="LN2-jA-gxl"/>
-                        <outletCollection property="cards" destination="47i-4I-LF2" id="eJB-nt-SZl"/>
-                        <outletCollection property="cards" destination="lfJ-to-3SZ" id="kdj-Ly-mxS"/>
-                        <outletCollection property="cards" destination="ths-Xm-hp7" id="Kxn-6c-rbm"/>
-                        <outletCollection property="cards" destination="VV0-gS-IFJ" id="FUl-li-5HO"/>
-                        <outletCollection property="cards" destination="XRP-xf-Fq8" id="fr3-S4-gPq"/>
-                        <outletCollection property="cards" destination="u0N-ie-RVs" id="ZEF-SJ-5PE"/>
-                        <outletCollection property="cards" destination="KnH-yo-sSd" id="Vf2-BQ-4eM"/>
-                        <outletCollection property="cards" destination="L9X-Kh-n3P" id="A9O-6j-ucN"/>
-                        <outletCollection property="cards" destination="Okp-rX-SJr" id="Ixz-JT-aZB"/>
-                        <outletCollection property="cards" destination="wQt-be-ors" id="wgn-f2-t1S"/>
-                        <outletCollection property="cards" destination="8HF-kQ-uzL" id="0MF-US-vWy"/>
-                        <outletCollection property="cards" destination="N5K-Wn-j5c" id="zmw-WF-POb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDr-Y6-L23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1371" y="1176"/>
         </scene>
-        <!--Main Tab Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="JnB-G4-3Bw">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lCQ-9h-KcM" customClass="MainTabController" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lCQ-9h-KcM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Cxv-SL-Eyn">
                         <barButtonItem key="rightBarButtonItem" title="History" id="tom-hB-olH"/>

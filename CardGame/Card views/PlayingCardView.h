@@ -7,7 +7,14 @@
 //
 
 #import "CardView.h"
+
 #import <UIKit/UIKit.h>
 
+#import "PlayingCardFaceView.h"
+#import "PlayingCardBackView.h"
+
 @interface PlayingCardView : UIView <CardView>
+@property (nonatomic, strong) PlayingCardFaceView *faceView;
+@property (nonatomic, strong) PlayingCardBackView *backView;
+- (void)setup;
 @end

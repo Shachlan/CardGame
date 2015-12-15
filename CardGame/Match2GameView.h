@@ -6,8 +6,8 @@
 //  Copyright © 2015 Shachar Langbeheim. All rights reserved.
 //
 
-#import "GameViewController.h"
+#import "CardsContainerView.h"
 
-@interface Match2ViewController : GameViewController
+@interface Match2GameView : CardsContainerView
 @end
 

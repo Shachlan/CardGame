@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)NSString *suit;
 @property (nonatomic)NSUInteger rank;
 @property (nonatomic) float cardAlpha;
+- (void)setup;
 @end
 
 NS_ASSUME_NONNULL_END
