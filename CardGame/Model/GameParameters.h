@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly) int initialNumberOfCards;
 @property (nonatomic,readonly) int numberOfCardsToMatch;
 @property (nonatomic,readonly) int matchMultiplier;
-
+@property (nonatomic,readonly) int numberOfCardsToAdd;
 @end
 
 NS_ASSUME_NONNULL_END

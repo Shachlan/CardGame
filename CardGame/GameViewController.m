@@ -18,6 +18,10 @@
 
 @implementation GameViewController
 
+- (IBAction)dealMoreCards:(id)sender {
+  [self.cardContainmentView dealMoreCards];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   self.cardContainmentView.scoreUpdater = self;

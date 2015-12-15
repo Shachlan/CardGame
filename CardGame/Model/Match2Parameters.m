@@ -6,16 +6,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation Match2Parameters
-- (int) initialNumberOfCards {
+- (int)initialNumberOfCards {
   return 25;
 }
 
-- (int) numberOfCardsToMatch {
+- (int)numberOfCardsToMatch {
   return 2;
 }
 
-- (int) matchMultiplier {
+- (int)matchMultiplier {
   return 2;
+}
+
+- (int)numberOfCardsToAdd {
+  return 0;
 }
 @end
 

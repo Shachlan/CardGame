@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardsContainerView : UIView
 - (void)reset;
+- (void)dealMoreCards;
 @property (nonatomic, weak) id<ScoreUpdater> scoreUpdater;
 @end
 

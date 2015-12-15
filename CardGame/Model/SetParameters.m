@@ -6,16 +6,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetParameters
-- (int) initialNumberOfCards {
+- (int)initialNumberOfCards {
   return 12;
 }
 
-- (int) numberOfCardsToMatch {
+- (int)numberOfCardsToMatch {
   return 3;
 }
 
-- (int) matchMultiplier {
+- (int)matchMultiplier {
   return 4;
+}
+
+- (int)numberOfCardsToAdd {
+  return 3;
 }
 
 @end
