@@ -6,7 +6,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation DiamondCreator
-- (UIBezierPath *)createShape:(CGRect)rect{
+- (UIBezierPath *)createShape:(CGRect)rect {
   UIBezierPath *diamond = [UIBezierPath bezierPath];
   [diamond setLineJoinStyle:kCGLineJoinMiter];
   

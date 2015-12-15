@@ -14,38 +14,35 @@
 
 @implementation SetCardDeck
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-        NSArray *colors = [SetCard colors];
-        NSArray *shapes = [SetCard shapes];
-        NSArray *fillLevels = [SetCard fillLevels];
-        
-        for(int numOfChars = 1 ; numOfChars <= 3; numOfChars++){
-            for (UIColor *color in colors) {
-                for (NSNumber *fillLevel in fillLevels){
-                    for(NSString *shape in shapes){
-                        
-                        [self addCard:[self createCard:numOfChars color:color fillLevel:fillLevel shape:shape]];
-                    }
-                }
-            }
-        }
-    }
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    NSArray *colors = [SetCard colors];
+    NSArray *shapes = [SetCard shapes];
+    NSArray *fillLevels = [SetCard fillLevels];
     
-    return self;
+    for(int numOfChars = 1 ; numOfChars <= 3; numOfChars++) {
+      for (UIColor *color in colors) {
+        for (NSNumber *fillLevel in fillLevels) {
+          for(NSString *shape in shapes) {
+            [self addCard:[self createCard:numOfChars color:color fillLevel:fillLevel shape:shape]];
+          }
+        }
+      }
+    }
+  }
+  
+  return self;
 }
 
 - (SetCard *)createCard:(int)numOfChars
-                                 color:(UIColor *)color
-                             fillLevel:(NSNumber *)fillLevel
-                                 shape:(NSString *)shape{
-    SetCard *card = [[SetCard alloc] init];
-    [card setCard:numOfChars color:color fillLevel:fillLevel shape:shape];
-    
-    return card;
+                  color:(UIColor *)color
+              fillLevel:(NSNumber *)fillLevel
+                  shape:(NSString *)shape {
+  SetCard *card = [[SetCard alloc] init];
+  [card setCard:numOfChars color:color fillLevel:fillLevel shape:shape];
+  
+  return card;
 }
 
 

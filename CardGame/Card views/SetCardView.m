@@ -24,21 +24,22 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @implementation SetCardView
-- (void)setup{
+- (void)setup {
   self.backgroundColor = nil;
   self.opaque = NO;
   self.contentMode = UIViewContentModeRedraw;
 }
 
-- (void)awakeFromNib{
+- (void)awakeFromNib {
   [self setup];
 }
 
 #define CORNER_RADIUS 12.0
 
-- (void)drawRect:(CGRect)rect{
+- (void)drawRect:(CGRect)rect {
   // Drawing code
-  UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS];
+  UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                                         cornerRadius:CORNER_RADIUS];
   
   [roundedRect addClip];
   
@@ -57,8 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
   float yRange = rect.size.height / (self.number);
   float yOffset = (yRange - ySize) / 2;
   
-  for(int i = 0; i < self.number; i++)
-  {
+  for(int i = 0; i < self.number; i++) {
     CGRect drawingBounds = CGRectMake(rect.origin.x + xOffset,
                                       yOffset * (1 + (2*i)) + (i * ySize),
                                       xSize,
@@ -91,10 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
   [self setNeedsDisplay];
 }
 
-- (void)setCard:(NSArray *)attributes{
+- (void)setCard:(NSArray *)attributes {
   self.number = [attributes[0] intValue];
   self.color = attributes[1];
-  switch([attributes[2] intValue]){
+  switch([attributes[2] intValue]) {
     case DIAMOND:
       self.shapeCreator = [[DiamondCreator alloc] init];
       break;
@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
       break;
   }
 
-  switch([attributes[3] intValue]){
+  switch([attributes[3] intValue]) {
     case NO_FILL:
       self.shapeFiller = [[EmptyFiller alloc] init];
       break;
@@ -119,9 +119,8 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
-- (void)matchCard{
-  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)
-  {
+- (void)matchCard {
+  for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
     recognizer.enabled = NO;
   }
   self.hidden = YES;

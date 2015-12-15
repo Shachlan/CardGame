@@ -6,7 +6,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation SquiggleCreator
-- (UIBezierPath *)createShape:(CGRect)rect{
+- (UIBezierPath *)createShape:(CGRect)rect {
   UIBezierPath *squiggle = [UIBezierPath bezierPath];
   
   float widthOffset = 0.2 * rect.size.width;
@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
   float rightJoint = rect.origin.x + rect.size.width - widthOffset;
   float leftControlPointX = rect.origin.x;
   float rightControlPointX = rect.origin.x + rect.size.width;
-  CGPoint leftArcControlPoint = CGPointMake(leftControlPointX, rect.origin.y + rect.size.height + heightOffset);
+  CGPoint leftArcControlPoint = CGPointMake(leftControlPointX,
+                                            rect.origin.y + rect.size.height + heightOffset);
   CGPoint rightArcControlPoint = CGPointMake(rightControlPointX, rect.origin.y - heightOffset);
   
   float upperJoint = rect.origin.y + heightOffset;

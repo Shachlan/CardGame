@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)drawRect:(CGRect)rect{
   // Drawing code
-  UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CORNER_RADIUS];
+  UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                                         cornerRadius:CORNER_RADIUS];
   
   [roundedRect addClip];
   

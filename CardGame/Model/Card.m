@@ -14,16 +14,14 @@
 
 @implementation Card
 
-- (int) match:(NSArray *)otherCards
-{
+- (int) match:(NSArray *)otherCards {
     NSMutableArray *allCards = [otherCards mutableCopy];
     [allCards addObject:self];
     
     return [self matchCards:allCards];
 }
 
-- (int)matchCards:(NSArray *)cards
-{
+- (int)matchCards:(NSArray *)cards {
     return 0;
 }
 

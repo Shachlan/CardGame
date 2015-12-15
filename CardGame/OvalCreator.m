@@ -6,7 +6,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation OvalCreator
-- (UIBezierPath *)createShape:(CGRect)rect{
+- (UIBezierPath *)createShape:(CGRect)rect {
   UIBezierPath *oval = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:12];
   return oval;
 }

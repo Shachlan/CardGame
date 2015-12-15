@@ -13,7 +13,7 @@
 #import "Grid.h"
 
 @interface GameViewController()
-@property (strong, nonatomic) IBOutletCollection(CardView) NSArray *cards;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cards;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong,nonatomic) Grid *grid;
@@ -21,29 +21,27 @@
 
 @implementation GameViewController
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
   [self setViews];
 }
 
 - (IBAction)cardClicked:(UITapGestureRecognizer *)sender {
-  CardView *card = (CardView *)sender.view;
+  id<CardView> card = (id<CardView>)sender.view;
   [self.game chooseCardAtIndex:[self.cards indexOfObject:card]];
   [self updateUI];
 }
 
-- (IBAction)resetGame:(UIButton *)sender
-{
+- (IBAction)resetGame:(UIButton *)sender {
   _game = nil;
   [self setViews];
 }
 
-- (void)setViews
-{
+- (void)setViews {
   float gridWidth = self.view.bounds.size.width * 0.9;
   float gridHeight = (self.view.bounds.size.height - self.scoreLabel.bounds.origin.y) * 0.9;
   [self.grid setSize:CGSizeMake(gridWidth, gridHeight)];
   
-  for(CardView *card in self.cards) {
+  for(id<CardView>  card in self.cards) {
     NSUInteger cardButtonIndex = [self.cards indexOfObject:card];
     Card *cardModel = [self.game cardAtIndex:cardButtonIndex];
     [card setCard:cardModel.attributes];
@@ -54,14 +52,12 @@
   [self updateUI];
 }
 
-- (void)updateUI
-{
-  for(CardView *card in self.cards) {
+- (void)updateUI {
+  for(id<CardView> card in self.cards) {
     NSUInteger cardButtonIndex = [self.cards indexOfObject:card];
     Card *cardModel = [self.game cardAtIndex:cardButtonIndex];
     [card chooseCard:cardModel.chosen];
-    if(cardModel.matched)
-    {
+    if(cardModel.matched){
       [card matchCard];
     }
   }
@@ -69,14 +65,12 @@
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
-- (Deck *)createDeck
-{
+- (Deck *)createDeck {
   return nil;
 }
 
-- (CardMatchingGame *)game
-{
-  if(!_game) {
+- (CardMatchingGame *)game {
+  if(!_game){
     _game = [[CardMatchingGame alloc]
              initWithCardCount:[self.cards count]
              usingDeck:[self createDeck]];
@@ -84,9 +78,8 @@
   return _game;
 }
 
-- (Grid *)grid
-{
-  if(!_grid) {
+- (Grid *)grid {
+  if(!_grid){
     _grid = [[Grid alloc] init];
   }
   return _grid;

@@ -11,9 +11,8 @@
 
 @implementation Match2ViewController
 
-- (Deck *)createDeck
-{
-    return [[PlayingCardDeck alloc] init];
+- (Deck *)createDeck {
+  return [[PlayingCardDeck alloc] init];
 }
 
 @end

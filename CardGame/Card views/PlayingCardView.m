@@ -19,10 +19,10 @@
 
 @implementation PlayingCardView
 
-- (void)chooseCard:(BOOL)chosen{
-  if(chosen != self.faceUp){
+- (void)chooseCard:(BOOL)chosen {
+  if(chosen != self.faceUp) {
     self.faceUp = chosen;
-    if(chosen){
+    if(chosen) {
       self.faceView.hidden = NO;
       [UIView transitionFromView:self.backView
                           toView:self.faceView
@@ -31,7 +31,7 @@
                                  UIViewAnimationOptionShowHideTransitionViews
                       completion:nil];
     }
-    else{
+    else {
        self.backView.hidden = NO;
       [UIView transitionFromView:self.faceView
                           toView:self.backView
@@ -43,12 +43,12 @@
   }
 }
 
-- (void)setCard:(NSArray *)attributes{
-  for (UIView *subview in self.subviews){
-    if([subview isKindOfClass:[PlayingCardFaceView class]]){
+- (void)setCard:(NSArray *)attributes {
+  for (UIView *subview in self.subviews) {
+    if([subview isKindOfClass:[PlayingCardFaceView class]]) {
       self.faceView = (PlayingCardFaceView *)subview;
     }
-    else{
+    else {
       self.backView = (PlayingCardBackView *)subview;
     }
   }
@@ -56,16 +56,14 @@
   self.faceView.rank = [attributes[0] intValue];
   self.faceView.suit = attributes[1];
   self.faceUp = NO;
-  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)
-  {
+  for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
     recognizer.enabled = YES;
   }
   self.faceView.cardAlpha = 1;
 }
 
 - (void)matchCard{
-  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)
-  {
+  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)  {
     self.faceView.cardAlpha = 0.3;
     recognizer.enabled = NO;
   }
@@ -77,7 +75,7 @@
   self.contentMode = UIViewContentModeRedraw;
 }
 
-- (void)awakeFromNib{
+- (void)awakeFromNib {
   [self setup];
 }
 

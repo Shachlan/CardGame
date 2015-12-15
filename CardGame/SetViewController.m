@@ -16,13 +16,11 @@
 
 @implementation SetViewController
 
-- (Deck *)createDeck
-{
+- (Deck *)createDeck {
   return [[SetCardDeck alloc] init];
 }
 
-- (CardMatchingGame *)game
-{
+- (CardMatchingGame *)game {
   CardMatchingGame *game = super.game;
   [game setMatchMode:YES];
   return game;

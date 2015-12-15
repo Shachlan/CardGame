@@ -7,6 +7,7 @@
 //
 
 #import "CardView.h"
+#import <UIKit/UIKit.h>
 
-@interface PlayingCardView : CardView
+@interface PlayingCardView : UIView <CardView>
 @end

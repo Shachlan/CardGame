@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardView : UIView
+@protocol CardView
 - (void)matchCard;
 - (void)chooseCard:(BOOL)choice;
 - (void)setCard:(NSArray *)attributes;
+- (void)addGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
 @end

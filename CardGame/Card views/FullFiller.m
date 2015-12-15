@@ -6,7 +6,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation FullFiller
-- (UIBezierPath *)createFill:(UIBezierPath *)shape{
+- (UIBezierPath *)createFill:(UIBezierPath *)shape {
   return nil;
 }
 @end

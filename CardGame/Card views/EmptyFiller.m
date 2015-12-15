@@ -6,7 +6,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation EmptyFiller
-- (UIBezierPath *)createFill:(UIBezierPath *)shape{
+- (UIBezierPath *)createFill:(UIBezierPath *)shape {
   [[UIColor whiteColor] setFill];
   [shape fill];
   return shape;
