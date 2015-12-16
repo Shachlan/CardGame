@@ -82,6 +82,10 @@ static const int COST_TO_CHOOSE = 1;
   }
 }
 
+- (BOOL)cardsLeft {
+  return [self.deck cardsLeft];
+}
+
 - (Card *)cardAtIndex:(NSUInteger)index {
   return (index < [self.cards count]) ? self.cards[index] : nil;
 }

@@ -13,7 +13,7 @@
 
 - (void)addCard:(Card *)card atTop:(BOOL)atTop;
 - (void)addCard:(Card *)card;
-
+- (BOOL)cardsLeft;
 - (Card *)drawRandomCard;
 
 @end

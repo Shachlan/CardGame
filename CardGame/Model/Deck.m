@@ -44,4 +44,8 @@
     return randomCard;
 }
 
+- (BOOL)cardsLeft {
+  return self.cards.count != 0;
+}
+
 @end

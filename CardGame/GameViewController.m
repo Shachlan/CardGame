@@ -22,7 +22,7 @@
   [self.cardContainmentView dealMoreCards];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   self.cardContainmentView.scoreUpdater = self;
   [self.cardContainmentView reset];
@@ -34,6 +34,14 @@
 
 - (void)updateScore:(int)score {
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
+}
+
+- (void)viewWillLayoutSubviews {
+  
+}
+
+- (void)viewDidLayoutSubviews {
+  [self.cardContainmentView layoutIfNeeded];
 }
 
 @end

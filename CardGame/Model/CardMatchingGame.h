@@ -18,6 +18,7 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)removeCardFromIndex:(NSUInteger)index;
 - (Card *)drawCard;
+- (BOOL)cardsLeft;
 
 @property (nonatomic, readonly) int score;
 
