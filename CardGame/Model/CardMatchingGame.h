@@ -16,7 +16,7 @@
 - (instancetype)initWithDeck:(Deck *)deck andParameters:(id<GameParameters>)params;
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
-- (void)removeCardFromIndex:(int)index;
+- (void)removeCardFromIndex:(NSUInteger)index;
 - (Card *)drawCard;
 
 @property (nonatomic, readonly) int score;

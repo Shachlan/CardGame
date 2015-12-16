@@ -130,8 +130,7 @@ NS_ASSUME_NONNULL_BEGIN
   for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
     recognizer.enabled = NO;
   }
-  self.hidden = YES;
-  [self setNeedsDisplay];
+  [UIView animateWithDuration:0.5 animations:^{ self.center = CGPointMake(self.center.x + self.superview.bounds.size.width, self.center.y + self.superview.bounds.size.height); } completion:^(BOOL completed) { [self removeFromSuperview]; }];
 }
 @end
 

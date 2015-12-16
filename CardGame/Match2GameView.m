@@ -38,4 +38,8 @@
   }
   return _cardFactory;
 }
+
+- (BOOL)removeCardsWhenMatched {
+  return NO;
+}
 @end

@@ -59,8 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - card handling
 
 - (void)dealMoreCards {
-  if(self.emptyFrames.count)
-  {
+  if(self.emptyFrames.count) {
     NSMutableArray *filledSpaces = [[NSMutableArray alloc] init];
     for(int i = 0; i < self.parameters.numberOfCardsToAdd; i++) {
       NSValue *rect = self.emptyFrames[i];
@@ -104,6 +103,25 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
+- (id<CardView>)addCardWithFrame:(CGRect)frame {
+  
+  Card *cardModel = [self.game drawCard];
+  if(!cardModel) {
+    return nil;
+  }
+  
+  id<CardView> cardView = [self.cardFactory
+                           makeCardViewWithAttributes:cardModel.attributes
+                           andFrame: CGRectMake(0,0,frame.size.width,frame.size.height)];
+  UIView *cardAsView = (UIView *)cardView;
+  [self addSubview:cardAsView];
+  [UIView animateWithDuration:0.5 animations:^{ cardAsView.center = CGPointMake(frame.origin.x + (frame.size.width / 2), frame.origin.y + (frame.size.height / 2)); }];
+  [cardView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                  initWithTarget:self
+                                  action:@selector(cardClicked:)]];
+  return cardView;
+}
+
 - (void)advanceRowAndColumnCounters {
   self.nextEmptyRow++;
   if(self.nextEmptyRow == self.grid.rowCount) {
@@ -112,36 +130,28 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
-- (id<CardView>)addCardWithFrame:(CGRect)frame {
-  
-  Card *cardModel = [self.game drawCard];
-  if(!cardModel) {
-    return nil;
-  }
-  id<CardView> cardView = [self.cardFactory
-                           makeCardViewWithAttributes:cardModel.attributes
-                           andFrame: frame];
-  [self addSubview:(UIView *)cardView];
-  [cardView addGestureRecognizer:[[UITapGestureRecognizer alloc]
-                                  initWithTarget:self
-                                  action:@selector(cardClicked:)]];
-  return cardView;
-}
-
 - (void)updateUI {
+  NSMutableArray *removedViewsIndices = [[NSMutableArray alloc] init];
   for(UIView *view in self.subviews) {
     if(view.hidden) {
       continue;
     }
     
     id<CardView> card = (id<CardView>)view;
-    NSUInteger cardButtonIndex = [self.subviews indexOfObject:view];
-    Card *cardModel = [self.game cardAtIndex:cardButtonIndex];
+    NSUInteger cardIndex = [self.subviews indexOfObject:view];
+    Card *cardModel = [self.game cardAtIndex:cardIndex];
     [card chooseCard:cardModel.chosen];
     if(cardModel.matched) {
+      if(self.removeCardsWhenMatched) {
+        [self.emptyFrames addObject:[NSValue valueWithCGRect:view.frame]];
+        [removedViewsIndices addObject:[NSNumber numberWithLong:cardIndex]];
+      }
       [card matchCard];
-      [self.emptyFrames addObject:[NSValue valueWithCGRect:view.frame]];
     }
+  }
+  
+  for(NSNumber *index in [removedViewsIndices reverseObjectEnumerator]) {
+    [self.game removeCardFromIndex:[index longValue]];
   }
   
   [self.scoreUpdater updateScore:self.game.score];

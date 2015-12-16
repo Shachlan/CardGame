@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reset;
 - (void)dealMoreCards;
 @property (nonatomic, weak) id<ScoreUpdater> scoreUpdater;
+@property (nonatomic,readonly) BOOL removeCardsWhenMatched;
 @end
 
 NS_ASSUME_NONNULL_END

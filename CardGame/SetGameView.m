@@ -41,4 +41,8 @@
   return _cardFactory;
 }
 
+- (BOOL)removeCardsWhenMatched {
+  return YES;
+}
+
 @end
