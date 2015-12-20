@@ -36,11 +36,8 @@
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 }
 
-- (void)viewWillLayoutSubviews {
-  
-}
-
 - (void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
   [self.cardContainmentView layoutIfNeeded];
 }
 

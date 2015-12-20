@@ -10,11 +10,15 @@
 
 @interface PlayingCardView()
 @property (nonatomic)BOOL faceUp;
+@property (nonatomic)BOOL matched;
 @end
 
 @implementation PlayingCardView
 
 - (void)chooseCard:(BOOL)chosen {
+  if(self.matched) {
+    return;
+  }
   if(chosen != self.faceUp) {
     self.faceUp = chosen;
     if(chosen) {
@@ -23,16 +27,16 @@
                           toView:self.faceView
                         duration:0.5
                          options:UIViewAnimationOptionTransitionFlipFromRight |
-                                 UIViewAnimationOptionShowHideTransitionViews
+       UIViewAnimationOptionShowHideTransitionViews
                       completion:nil];
     }
     else {
-       self.backView.hidden = NO;
+      self.backView.hidden = NO;
       [UIView transitionFromView:self.faceView
                           toView:self.backView
                         duration:0.5
                          options:UIViewAnimationOptionTransitionFlipFromLeft |
-                                 UIViewAnimationOptionShowHideTransitionViews
+       UIViewAnimationOptionShowHideTransitionViews
                       completion:nil];
     }
   }
@@ -59,10 +63,8 @@
 }
 
 - (void)matchCard{
-  for (UIGestureRecognizer *recognizer in self.gestureRecognizers)  {
-    self.faceView.cardAlpha = 0.3;
-    recognizer.enabled = NO;
-  }
+  self.faceView.cardAlpha = 0.3;
+  self.matched = YES;
 }
 
 @end

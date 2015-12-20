@@ -18,46 +18,99 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) id<GameParameters> parameters;
 @property (strong,nonatomic) id<CardViewFactory> cardFactory;
 @property (strong, nonatomic) NSMutableArray *emptyFrames;
-@property (strong, nonatomic) NSMutableArray *pinchedCards;
-
+@property (nonatomic) BOOL wasSetup;
+@property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, strong) UIAttachmentBehavior *dragAttachment;
+@property (nonatomic) CGPoint previousDragPoint;
+@property (nonatomic) BOOL needLayout;
 @end
 
 @implementation CardsContainerView
 
 #pragma mark - gesture recognition
 
-- (IBAction)cardPinched:(UIPinchGestureRecognizer *)sender {
-  /*
-  if(sender.state == UIGestureRecognizerStateBegan){
-    UIView *vie1 = [self hitTest:[sender locationOfTouch:1 inView:self] withEvent:nil];
-    UIView *vie2 = [self hitTest:[sender locationOfTouch:0 inView:self] withEvent:nil];
-    [vie1 removeFromSuperview];
-    [vie2 removeFromSuperview];
-  }
-  else if(sender.state == UIGestureRecognizerStateChanged) {
-    NSLog(@"%f",sender.scale);
-  }
-   */
-  
-  
-}
-
 - (IBAction)cardClicked:(UITapGestureRecognizer *)sender {
-  UIView * card = sender.view;
-  [self.game chooseCardAtIndex:[self.subviews indexOfObject:card]];
+  if([self.animator behaviors].count)
+  {
+    [self.animator removeAllBehaviors];
+    [self respreadCards];
+  }
+  else {
+    UIView * card = sender.view;
+    [self.game chooseCardAtIndex:[self.subviews indexOfObject:card]];
+  }
   [self updateUI];
 }
 
-- (IBAction)viewPanned:(UIPinchGestureRecognizer *)sender {
-  
+- (IBAction)pinched:(UIPinchGestureRecognizer *)sender {
+  if(sender.state == UIGestureRecognizerStateChanged){
+    for(UIView *view in self.subviews) {
+      NSUInteger index = [self.subviews indexOfObject:view];
+      CGPoint origin = [self.grid frameOfCellAtIndex:index].origin;
+      CGPoint difference = CGPointMake(self.center.x - origin.x, self.center.y - origin.y);
+      float inverseScale = 1 - sender.scale;
+      CGPoint scaledDifference = CGPointMake(difference.x * inverseScale,
+                                             difference.y * inverseScale);
+      
+      view.frame = CGRectMake(origin.x + scaledDifference.x,
+                              origin.y + scaledDifference.y,
+                              view.frame.size.width,
+                              view.frame.size.height);
+    }
+  }
+  else if(sender.state == UIGestureRecognizerStateEnded) {
+    if(sender.scale > 0.1){
+      [self respreadCards];
+    }
+    else {
+      for(UIView *view in self.subviews) {
+        NSUInteger index = [self.subviews indexOfObject:view];
+        if(index) {
+          UIView *previousView = [self.subviews objectAtIndex:index -1];
+          UIAttachmentBehavior *attach =
+            [UIAttachmentBehavior limitAttachmentWithItem:previousView
+                                       offsetFromCenter:UIOffsetZero
+                                         attachedToItem:view
+                                       offsetFromCenter:UIOffsetZero];
+          [self.animator addBehavior:attach];
+        }
+      }
+    }
+  }
+}
+
+- (IBAction)panned:(UIPanGestureRecognizer *)sender {
+  if([self.animator behaviors].count)
+  {
+    CGPoint touchPoint = [sender locationInView:self];
+    UIView* draggedView = sender.view;
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+      self.previousDragPoint = touchPoint;
+      self.dragAttachment = [[UIAttachmentBehavior alloc] initWithItem:draggedView attachedToAnchor:touchPoint];
+      [self.animator addBehavior:self.dragAttachment];
+      
+    } else if (sender.state == UIGestureRecognizerStateChanged) {
+      [self.dragAttachment setAnchorPoint:touchPoint];
+      
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+      [self.animator removeBehavior:self.dragAttachment];
+    }
+  }
 }
 
 #pragma mark - initializers and event handlers
 
 - (void)reset {
-  [self addGestureRecognizer:[[UIPanGestureRecognizer alloc]
-                                  initWithTarget:self
-                                  action:@selector(viewPanned:)]];
+  if(!self.wasSetup)
+  {
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
+    [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc]
+                                initWithTarget:self
+                                action:@selector(pinched:)]];
+    self.wasSetup = YES;
+  }
+  
   _game = nil;
   [[self subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [self setView];
@@ -75,20 +128,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setupGrid:(int)numberOfCards {
   _emptyFrames = nil;
-  self.nextEmptyColumn = 0;
-  self.nextEmptyRow = 0;
   _grid = nil;
   [self.grid setSize:CGSizeMake(self.bounds.size.width, self.bounds.size.height)];
   self.grid.minimumNumberOfCells = numberOfCards;
   self.grid.cellAspectRatio = 9.0 / 16.0;
+  self.needLayout = YES;
 }
 
 - (void)layoutIfNeeded {
   [super layoutIfNeeded];
-  self.nextEmptyColumn = 0;
-  self.nextEmptyRow = 0;
-  self.grid.size = self.bounds.size;
-  [self respreadCards];
+  if(self.needLayout) {
+    self.grid.size = self.bounds.size;
+    [self respreadCards];
+    self.needLayout = NO;
+  }
 }
 
 #pragma mark - card handling
@@ -125,6 +178,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)respreadCards {
+  [self.emptyFrames removeAllObjects];
+  self.nextEmptyColumn = 0;
+  self.nextEmptyRow = 0;
   for(UIView *subview in self.subviews) {
     if(!subview.hidden) {
       CGRect frame = [self nextFreeSlot];
@@ -158,9 +214,10 @@ NS_ASSUME_NONNULL_BEGIN
   [cardView addGestureRecognizer:[[UITapGestureRecognizer alloc]
                                   initWithTarget:self
                                   action:@selector(cardClicked:)]];
-  [cardView addGestureRecognizer:[[UIPinchGestureRecognizer alloc]
-                              initWithTarget:self
-                              action:@selector(cardPinched:)]];
+  
+  [cardView addGestureRecognizer:[[UIPanGestureRecognizer alloc]
+                                  initWithTarget:self
+                                  action:@selector(panned:)]];
   return cardView;
 }
 
@@ -236,12 +293,6 @@ NS_ASSUME_NONNULL_BEGIN
   return _emptyFrames;
 }
 
-- (NSMutableArray *)pinchedCards {
-  if(!_pinchedCards) {
-    _pinchedCards = [[NSMutableArray alloc] init];
-  }
-  return _pinchedCards;
-}
 
 @end
 
